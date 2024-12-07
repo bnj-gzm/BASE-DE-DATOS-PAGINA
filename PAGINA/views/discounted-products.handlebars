@@ -1,0 +1,12 @@
+<div>
+    <h1>Productos con Descuento</h1>
+    {{#if discountedProducts}}
+        <ul>
+            {{#each discountedProducts}}
+                <li>{{this.title}} - Precio: ${{this.price}} - Descuento: {{this.discount}}%</li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>No hay productos con descuento actualmente.</p>
+    {{/if}}
+</div>

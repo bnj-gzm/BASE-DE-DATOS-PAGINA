@@ -1,0 +1,41 @@
+<!-- Tabla de Compras -->
+<h3>Historial de Compras</h3>
+{{#if success}}
+    <div class="alert alert-success">
+        {{success}}
+    </div>
+{{/if}}
+{{#if error}}
+    <div class="alert alert-danger">
+        {{error}}
+    </div>
+{{/if}}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Fecha de Compra</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each purchases}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>{{this.quantity}}</td>
+                <td>{{this.order_date}}</td>
+                <td>
+                    <form action="/return-product/{{this.sale_id}}" method="POST">
+                        <button type="submit" class="btn btn-danger">Devolver</button>
+                    </form>
+                </td>
+            </tr>
+        {{else}}
+            <tr>
+                <td colspan="5" class="text-center">No tienes compras registradas.</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

@@ -1,0 +1,22 @@
+<div class="container mt-5">
+        <h2>Crear nuevo producto</h2>
+        <form action="/create-product" method="POST">
+            <div class="mb-3">
+                <label for="img" class="form-label">URL de la Imagen</label>
+                <input type="text" class="form-control" id="img" name="img" required>
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">Título</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Precio</label>
+                <input type="text" class="form-control" id="price" name="price" required>
+            </div>
+            <div class="mb-3">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" class="form-control" id="stock" name="stock" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Crear Producto</button>
+        </form>
+    </div>

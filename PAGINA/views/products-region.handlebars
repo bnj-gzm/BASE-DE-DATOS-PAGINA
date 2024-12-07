@@ -1,0 +1,28 @@
+<div>
+    <h1>Productos por Región</h1>
+    
+    {{#if products}}
+        <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; text-align: center;">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Región</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                    <tr>
+                        <td>{{this.title}}</td>
+                        <td>{{this.price}} $</td>
+                        <td>{{this.stock}}</td>
+                        <td>{{this.region}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <p>No hay productos disponibles para mostrar.</p>
+    {{/if}}
+</div>

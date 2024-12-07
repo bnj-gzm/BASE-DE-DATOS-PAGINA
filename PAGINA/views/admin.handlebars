@@ -1,0 +1,148 @@
+<div class="container mt-5">
+    <h2>Panel de Administración</h2>
+    <p>Monto total de ventas: ${{this.totalSales}}</p>
+    <a href="/create-product" class="btn btn-success mb-3">Crear nuevo producto</a>
+
+    <!-- Tabla de Productos -->
+<div class="table-responsive">
+    <h3>Lista de Productos</h3>
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Imagen (URL)</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>${{this.price}}</td>
+                <td>{{this.stock}}</td>
+                <td>{{this.img}}</td>
+                <td>
+                    <a href="/edit-product/{{this.id}}" class="btn btn-warning">Editar</a>
+                    <form action="/delete-product/{{this.id}}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Borrar</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+
+    <!-- Reportes -->
+    <div class="mt-5">
+        <h3>Reportes</h3>
+
+        <!-- Productos más vendidos -->
+        <div class="table-responsive mb-4">
+            <h4>Productos Más Vendidos</h4>
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Total Vendido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each topProducts}}
+                    <tr>
+                        <td>{{this.product_title}}</td>
+                        <td>{{this.total_sold}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Productos con stock bajo -->
+        <div class="table-responsive mb-4">
+            <h4>Productos con Stock Bajo</h4>
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Stock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each lowStockProducts}}
+                    <tr>
+                        <td>{{this.title}}</td>
+                        <td>{{this.stock}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Productos devueltos -->
+        <div class="table-responsive mb-4">
+            <h4>Productos Devueltos 3 Veces o Más</h4>
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad de Devoluciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each returnedProducts}}
+                    <tr>
+                        <td>{{this.product_title}}</td>
+                        <td>{{this.returns_count}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+<!-- Mostrar productos por categoría -->
+<h3>Productos por Categoría</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Categoría</th>
+            <th>Número de Productos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each productsByCategory}}
+        <tr>
+            <td>{{this.category}}</td>
+            <td>{{this.total_products}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+        <!-- Historial de compras -->
+        <div class="table-responsive">
+            <h4>Historial de Compras por Cliente</h4>
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Fecha de Compra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each purchaseHistory}}
+                    <tr>
+                        <td>{{this.customer_name}}</td>
+                        <td>{{this.product_title}}</td>
+                        <td>{{this.quantity}}</td>
+                        <td>{{this.order_date}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

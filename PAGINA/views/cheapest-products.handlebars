@@ -1,0 +1,19 @@
+<div class="container mt-5">
+    <h2>Productos más baratos</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each cheapestProducts}}
+                <tr>
+                    <td>{{this.title}}</td>
+                    <td>${{this.price}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
